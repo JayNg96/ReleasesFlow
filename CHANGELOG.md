@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/JayNg96/ReleasesFlow/compare/v0.2.0...v0.2.1) (2022-12-29)
+
+
+### Bug Fixes
+
+* missing letter ([8d3d3fe](https://github.com/JayNg96/ReleasesFlow/commit/8d3d3fe3e540233313022c6537283851f9970daa))
+
+
+
 # [0.2.0](https://github.com/JayNg96/ReleasesFlow/compare/v0.1.0...v0.2.0) (2022-12-29)
 
 
