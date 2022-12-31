@@ -40,4 +40,11 @@ jobs:
       if: always()
       with:
         junit_files: "report.xml"
+    
+    - name: send report xml on push
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        document: report.xml
 
