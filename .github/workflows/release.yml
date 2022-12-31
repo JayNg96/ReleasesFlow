@@ -17,16 +17,6 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
           version-file: "./package.json,./package-lock.json"
-      
-      - name: test with pytest
-        run: |
-          pytest test_*.py -v -cov --junitxml=test_report.xml
-
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          junit_files: "test_report.xml"
         
       - name: create release
         id: create-new-release
@@ -55,7 +45,7 @@ jobs:
           asset_name: ${{ steps.changelog.outputs.tag }}.zip
           asset_content_type: application/zip
 
-      - name: send report xml on push
+      - name: send zip on push
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
@@ -65,13 +55,6 @@ jobs:
             Commit message: ${{ github.event.commits[0].message }}
             Repository: ${{ github.repository }}
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          document: test_report.xml
-
-      - name: send zip on push
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
+            
             File Version ${{ steps.changelog.outputs.tag }}.zip will be downloadable below.
           document: ${{ steps.changelog.outputs.tag }}.zip
