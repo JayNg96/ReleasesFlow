@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.4.0...v1.5.0) (2022-12-31)
+
+
+### Features
+
+* add new feature ([72866ea](https://github.com/JayNg96/ReleasesFlow/commit/72866ea195a360bd8b8a492d5df3ceffe9405748))
+
+
+
 # [1.4.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.3.0...v1.4.0) (2022-12-31)
 
 
@@ -31,22 +40,6 @@
 ### Features
 
 * added new feature to feature 4 ([ac135d4](https://github.com/JayNg96/ReleasesFlow/commit/ac135d43908a6333c117dfe8845a3cd4e66600bc))
-
-
-
-# [1.0.0](https://github.com/JayNg96/ReleasesFlow/compare/v0.3.0...v1.0.0) (2022-12-30)
-
-
-### Features
-
-* create feature 8 ([2ffc931](https://github.com/JayNg96/ReleasesFlow/commit/2ffc9316e1a2e3f1121e986406dd3478ed17368f))
-* new changes ([66517f9](https://github.com/JayNg96/ReleasesFlow/commit/66517f90e14c1242d193e9208bd4e2f41a5d1bfd))
-* Release v1.1 ([bcfadd2](https://github.com/JayNg96/ReleasesFlow/commit/bcfadd2b69a6ae1bcd9de6d31f33545d1c2d5b64))
-
-
-### BREAKING CHANGES
-
-* Release v1.1
 
 
 
