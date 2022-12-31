@@ -17,7 +17,17 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
           version-file: "./package.json,./package-lock.json"
+      
+      - name: test with pytest
+        run: |
+          pytest test_*.py -v -cov --junitxml=test_report.xml
 
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        if: always()
+        with:
+          junit_files: "test_report.xml"
+        
       - name: create release
         id: create-new-release
         uses: actions/create-release@v1
@@ -55,7 +65,7 @@ jobs:
             Commit message: ${{ github.event.commits[0].message }}
             Repository: ${{ github.repository }}
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          document: report.xml
+          document: test_report.xml
 
       - name: send zip on push
         uses: appleboy/telegram-action@master
