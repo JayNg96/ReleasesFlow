@@ -27,17 +27,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         filename: .github/ISSUE_TEMPLATE.md
-      
-    - name: Upload document
-      uses: actions/upload-artifact@v2
-      with: 
-        name: assetDocuments
-        path: downloads
-      
-    - name: download remote information
-      uses: actions/download-artifact@v2
-      with:
-        name: assetDocuments
           
     - name: conventional Changelog Action
       id: changelog
