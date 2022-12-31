@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.2.0...v1.3.0) (2022-12-31)
+
+
+### Features
+
+* added new features ([a3d619f](https://github.com/JayNg96/ReleasesFlow/commit/a3d619fbb4dc9f0cdbdb03a303047c11bb9560cb))
+
+
+
 # [1.2.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.1.0...v1.2.0) (2022-12-31)
 
 
@@ -44,15 +53,6 @@
 
 * added feature 1 ([b586fe0](https://github.com/JayNg96/ReleasesFlow/commit/b586fe0294aa77942c6c3a18c04a8bbb6fc88279))
 * added feature 2 ([35036d7](https://github.com/JayNg96/ReleasesFlow/commit/35036d79489c6df292320a4803c5e9e9ae70ae51))
-
-
-
-## [0.2.1](https://github.com/JayNg96/ReleasesFlow/compare/v0.2.0...v0.2.1) (2022-12-29)
-
-
-### Bug Fixes
-
-* missing letter ([8d3d3fe](https://github.com/JayNg96/ReleasesFlow/commit/8d3d3fe3e540233313022c6537283851f9970daa))
 
 
 
