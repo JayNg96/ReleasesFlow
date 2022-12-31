@@ -27,18 +27,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         filename: .github/ISSUE_TEMPLATE.md
-  
-    - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action/composite@v2
-      if: always()
-      with:
-        junit_files: "report.xml"
-        
-    - name: create folder
-      run: mkdir downloads
-    
-    - name: move files
-      run: mv *.xml ./downloads
       
     - name: Upload document
       uses: actions/upload-artifact@v2
