@@ -1,4 +1,4 @@
-name: CIntegration
+name: CIntegration for DEV
 
 on:
   push:
@@ -9,9 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: |
-      uat
-      dev
+    environment: DEV
     steps:
     - uses: actions/setup-python@v2
       with:
