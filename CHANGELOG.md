@@ -1,3 +1,12 @@
+## [1.5.5](https://github.com/JayNg96/ReleasesFlow/compare/v1.5.4...v1.5.5) (2023-01-01)
+
+
+### Bug Fixes
+
+* added new line ([d3b88ac](https://github.com/JayNg96/ReleasesFlow/commit/d3b88acb9e00086b9f6e989e136acde9e25a9599))
+
+
+
 ## [1.5.4](https://github.com/JayNg96/ReleasesFlow/compare/v1.5.3...v1.5.4) (2022-12-31)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * Renamed File ([03033a5](https://github.com/JayNg96/ReleasesFlow/commit/03033a57db2297ff1fa0b728be3f3493f365848f))
-
-
-
-# [1.5.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.4.0...v1.5.0) (2022-12-31)
-
-
-### Features
-
-* add new feature ([72866ea](https://github.com/JayNg96/ReleasesFlow/commit/72866ea195a360bd8b8a492d5df3ceffe9405748))
 
 
 
