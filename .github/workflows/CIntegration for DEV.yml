@@ -3,7 +3,6 @@ name: CIntegration for DEV
 on:
   push:
     branches:
-      - 'uat'
       - 'dev'
     
 jobs:
