@@ -7,7 +7,7 @@ on:
 jobs:
   Deliver:
     runs-on: ubuntu-latest
-    environment: prod
+    environment: PROD
     steps:
       - uses: actions/checkout@v3
       
