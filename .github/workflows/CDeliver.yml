@@ -5,7 +5,7 @@ on:
       - 'prod'
 
 jobs:
-  changelog:
+  Deliver:
     runs-on: ubuntu-latest
     environment: prod
     steps:
