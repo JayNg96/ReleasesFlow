@@ -2,7 +2,9 @@ name: CI for Hello World
 
 on:
   push:
-    branches: [main]
+    branches:
+      - 'uat'
+      - 'dev'
     
 jobs:
   build:
@@ -20,9 +22,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: JayNg96/ReleasesFlow
-    - name: list out contents
-      run: |
-        ls
         
     - name: test with pytest
       run: |
