@@ -1,4 +1,4 @@
-name: CI for Hello World
+name: CIntegration
 
 on:
   push:
@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: |
+      uat
+      dev
     steps:
     - uses: actions/setup-python@v2
       with:
