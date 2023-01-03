@@ -35,8 +35,6 @@ jobs:
         assignees: ${{ github.actor }}
         update_existing: true
         search_existing: all
-    - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
-    - run: 'echo Created ${{ steps.create-issue.outputs.url }}'
   
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action/composite@v2
@@ -47,7 +45,14 @@ jobs:
     - name: send report xml on push
       uses: appleboy/telegram-action@master
       with:
-        assignees: ${{ github.actor }}
-        update_existing: true
-        search_existing: all
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ${{ github.actor }} has just pushed something new to dev.
+          Commit message: ${{ github.event.commits[0].message }}
+          Repository: ${{ github.repository }}
+          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          
+          Below are the test report:
+        document: report.xml
 
