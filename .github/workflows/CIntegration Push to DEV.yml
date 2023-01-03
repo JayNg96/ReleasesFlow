@@ -32,7 +32,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        filename: .github/ISSUE_TEMPLATE.yml
+        assignees: ${{ github.actor }}
+        update_existing: true
+        search_existing: all
   
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action/composite@v2
