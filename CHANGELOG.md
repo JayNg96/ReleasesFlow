@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.6.0...v1.7.0) (2023-01-03)
+
+
+### Features
+
+* create upload student data button ([f9be282](https://github.com/JayNg96/ReleasesFlow/commit/f9be282e5e1cd962126a4d703261c5931ccc160c))
+
+
+
 # [1.6.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.5.5...v1.6.0) (2023-01-01)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * add new lines ([cfcc3d0](https://github.com/JayNg96/ReleasesFlow/commit/cfcc3d056daa320ee52efa78d54bd7abb1a0157f))
-
-
-
-## [1.5.2](https://github.com/JayNg96/ReleasesFlow/compare/v1.5.1...v1.5.2) (2022-12-31)
-
-
-### Bug Fixes
-
-* Fixed broken line ([78c6ce1](https://github.com/JayNg96/ReleasesFlow/commit/78c6ce198dd1d0a3a4389d4d21a74f2b4fc40764))
 
 
 
