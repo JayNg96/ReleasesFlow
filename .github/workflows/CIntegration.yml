@@ -1,15 +1,16 @@
-name: CIntegration for DEV
-
+name: CIntegration
 on:
   push:
     branches:
       - 'dev'
-    
+      - 'uat'
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: DEV
     steps:
+    - name: Set environment variable
+      run: echo "::set-env name=ENVIRONMENT::${{ github.ref }}"
     - uses: actions/setup-python@v2
       with:
         python-version: 3.11
@@ -19,7 +20,7 @@ jobs:
         pip install flake8 pytest pytest-cov
         
     - name: Checkout Own Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: JayNg96/ReleasesFlow
         
@@ -48,4 +49,3 @@ jobs:
         assignees: ${{ github.actor }}
         update_existing: true
         search_existing: all
-
