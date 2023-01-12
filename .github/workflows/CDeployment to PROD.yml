@@ -1,14 +1,14 @@
-name: CDeployment
-on:
-  pull_request:
-    branches: 'prod'
+# name: CDeployment
+# on:
+#   pull_request:
+#     branches: 'prod'
 
-jobs:
-  Continuous-Deployment:
-    runs-on: ubuntu-latest
-    environment: PROD
-    steps:
-      - uses: actions/checkout@v3
+# jobs:
+#   Continuous-Deployment:
+#     runs-on: ubuntu-latest
+#     environment: PROD
+#     steps:
+#       - uses: actions/checkout@v3
       
 
 
