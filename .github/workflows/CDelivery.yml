@@ -72,14 +72,18 @@ jobs:
               asset_path: ./${{ steps.changelog.outputs.tag }}.zip
               asset_name: ${{ steps.changelog.outputs.tag }}.zip
               asset_content_type: application/zip
-
-      - name: send report xml on push
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-              ${{ github.actor }} has just submitted a pull request!
               
-              Below are the test report:
-          document: report.xml   
+            # send zip on push
+            uses: appleboy/telegram-action@master
+            with:
+              to: ${{ secrets.TELEGRAM_TO }}
+              token: ${{ secrets.TELEGRAM_TOKEN }}
+              message: |
+                ${{ github.actor }} has released a new version: ${{ env.RELEASE_VERSION }}
+                Commit message: ${{ github.event.commits[0].message }}
+                Repository: ${{ github.repository }}
+
+                File version ${{ steps.changelog.outputs.tag }}.zip will be downloadable below.
+              document: ${{ steps.changelog.outputs.tag }}.zip
+          
+
