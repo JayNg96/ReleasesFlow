@@ -1,14 +1,34 @@
-name: CIntegration to DEV
+name: CIntegration
 on:
   push:
     branches:
       - 'dev'
+      - 'uat'
+      - 'prod'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: DEV
     steps:
+    
+    - name: Set environment variable to DEV
+      if: github.ref == 'refs/heads/dev'
+      run: echo "DEV Environment"
+      env:
+        ENVIRONMENT: DEV
+        
+    - name: Set environment variable to UAT
+      if: github.ref == 'refs/heads/uat'
+      run: echo "UAT Environment"
+      env:
+        ENVIRONMENT: UAT
+        
+    - name: Set environment variable to PROD
+      if: github.ref == 'refs/heads/prod'
+      run: echo "PROD Environment"
+      env:
+        ENVIRONMENT: PROD 
+        
     - uses: actions/setup-python@v2
       with:
         python-version: 3.11
@@ -44,59 +64,14 @@ jobs:
     - name: send report xml on push
       uses: appleboy/telegram-action@master
       with:
-        assignees: ${{ github.actor }}
-        update_existing: true
-        search_existing: all
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ${{ github.actor }} has just pushed to DEV.
+          Commit message: ${{ github.event.commits[0].message }}
+          Repository: ${{ github.repository }}
+          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          
+          Below are the test report:
+        document: report.xml
 
-
-name: CIntegration to UAT
-on:
-  push:
-    branches:
-      - 'uat'
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    environment: UAT
-    steps:
-    - name: Set environment variable
-      run: echo "::set-env name=ENVIRONMENT::${{ github.ref }}"
-    - uses: actions/setup-python@v2
-      with:
-        python-version: 3.11
-        
-    - name: Install Libraries
-      run: |
-        pip install flake8 pytest pytest-cov
-        
-    - name: Checkout Own Repo
-      uses: actions/checkout@v3
-      with:
-        repository: JayNg96/ReleasesFlow
-        
-    - name: test with pytest
-      run: |
-        pytest test_*.py -v -cov --junitxml=report.xml
-
-    - if: ${{ failure() }}
-      uses: JasonEtco/create-an-issue@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        assignees: ${{ github.actor }}
-        update_existing: true
-        search_existing: all
-  
-    - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action/composite@v2
-      if: always()
-      with:
-        junit_files: "report.xml"
-    
-    - name: send report xml on push
-      uses: appleboy/telegram-action@master
-      with:
-        assignees: ${{ github.actor }}
-        update_existing: true
-        search_existing: all
