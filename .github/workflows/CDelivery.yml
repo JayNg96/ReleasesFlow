@@ -7,7 +7,7 @@ on:
       - 'prod'
 
 jobs:
-  test:
+  Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -37,6 +37,7 @@ jobs:
   Create-Release:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/prod'
+    needs: Test
     environment: PROD
     steps:
       - name: Checkout Own Repo
