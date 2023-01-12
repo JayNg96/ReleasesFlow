@@ -37,7 +37,7 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/prod'
-    needs: Build
+    needs: build
     environment: PROD
     steps:
       - name: Checkout Own Repo
