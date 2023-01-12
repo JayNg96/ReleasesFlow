@@ -7,21 +7,61 @@ on:
       - 'prod'
 
 jobs:
-  env-dev:
+  build-dev:
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     environment: DEV
-  env-uat:
+    steps:
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+        
+    - name: Install Libraries
+      run: |
+        pip install flake8 pytest pytest-cov
+        
+    - name: Checkout Own Repo
+      uses: actions/checkout@v3
+      with:
+        repository: JayNg96/ReleasesFlow
+        
+    - name: test with pytest
+      run: |
+        pytest tests/test_*.py -v -cov --junitxml=report.xml
+
+    - if: ${{ failure() }}
+      uses: JasonEtco/create-an-issue@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        assignees: ${{ github.actor }}
+        update_existing: true
+        search_existing: all
+  
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        junit_files: "report.xml"
+    
+    - name: send report xml on push
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ${{ github.actor }} has just pushed to DEV.
+          Commit message: ${{ github.event.commits[0].message }}
+          Repository: ${{ github.repository }}
+          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          
+          Below are the test report:
+        document: report.xml
+    
+  build-uat:
     if: github.ref == 'refs/heads/uat'
     runs-on: ubuntu-latest
-    environment: UAT      
-  env-prod:
-    if: github.ref == 'refs/heads/prod'
-    runs-on: ubuntu-latest
-    environment: PROD
-    
-  build:
-    runs-on: ubuntu-latest
+    environment: UAT   
     steps:
     - uses: actions/setup-python@v2
       with:
@@ -69,5 +109,54 @@ jobs:
           Below are the test report:
         document: report.xml
         
+  build-prod:
+    if: github.ref == 'refs/heads/prod'
+    runs-on: ubuntu-latest
+    environment: PROD
+    steps:
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+        
+    - name: Install Libraries
+      run: |
+        pip install flake8 pytest pytest-cov
+        
+    - name: Checkout Own Repo
+      uses: actions/checkout@v3
+      with:
+        repository: JayNg96/ReleasesFlow
+        
+    - name: test with pytest
+      run: |
+        pytest tests/test_*.py -v -cov --junitxml=report.xml
 
-
+    - if: ${{ failure() }}
+      uses: JasonEtco/create-an-issue@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        assignees: ${{ github.actor }}
+        update_existing: true
+        search_existing: all
+  
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        junit_files: "report.xml"
+    
+    - name: send report xml on push
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ${{ github.actor }} has just pushed to DEV.
+          Commit message: ${{ github.event.commits[0].message }}
+          Repository: ${{ github.repository }}
+          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          
+          Below are the test report:
+        document: report.xml
+        
