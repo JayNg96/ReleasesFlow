@@ -1,3 +1,12 @@
+# [1.11.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.10.0...v1.11.0) (2023-01-12)
+
+
+### Features
+
+* Update Workflow ([353c879](https://github.com/JayNg96/ReleasesFlow/commit/353c8792d29ddc6340f04ef77f6b378088a34d94))
+
+
+
 # [1.10.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.9.0...v1.10.0) (2023-01-12)
 
 
@@ -36,15 +45,6 @@
 ### Features
 
 * create upload student data button ([f9be282](https://github.com/JayNg96/ReleasesFlow/commit/f9be282e5e1cd962126a4d703261c5931ccc160c))
-
-
-
-# [1.6.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.5.5...v1.6.0) (2023-01-01)
-
-
-### Features
-
-* added new line2 ([8bccd76](https://github.com/JayNg96/ReleasesFlow/commit/8bccd76ce0acab3dd0c414b75e745ed49cdc6dd5))
 
 
 
