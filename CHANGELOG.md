@@ -1,3 +1,17 @@
+# [1.8.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.7.0...v1.8.0) (2023-01-12)
+
+
+### Bug Fixes
+
+* fix test importing from parent directory ([be8e866](https://github.com/JayNg96/ReleasesFlow/commit/be8e8660bb726061f503e96db72c7455d6920dd1))
+
+
+### Features
+
+* new feature ([e58d265](https://github.com/JayNg96/ReleasesFlow/commit/e58d2659745a5b2a0040ce1835f073452d913905))
+
+
+
 # [1.7.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.6.0...v1.7.0) (2023-01-03)
 
 
@@ -31,15 +45,6 @@
 ### Bug Fixes
 
 * Added new lines ([2fc9794](https://github.com/JayNg96/ReleasesFlow/commit/2fc97946c82444ea42c3e9936d37126b0372b5bb))
-
-
-
-## [1.5.3](https://github.com/JayNg96/ReleasesFlow/compare/v1.5.2...v1.5.3) (2022-12-31)
-
-
-### Bug Fixes
-
-* add new lines ([cfcc3d0](https://github.com/JayNg96/ReleasesFlow/commit/cfcc3d056daa320ee52efa78d54bd7abb1a0157f))
 
 
 
