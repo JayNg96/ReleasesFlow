@@ -26,6 +26,15 @@ jobs:
       run: |
         pytest test_*.py -v -cov --junitxml=report.xml
   
+    - if: ${{ failure() }}
+      uses: JasonEtco/create-an-issue@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        assignees: ${{ github.actor }}
+        update_existing: true
+        search_existing: all
+
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action/composite@v2
       if: always()
@@ -39,7 +48,10 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
             ${{ github.actor }} has just submitted a pull request!
-    
+            
+            Below are the test report:
+        document: report.xml
+
   pr-labeler:
     runs-on: ubuntu-latest
     name: Label the PR size
