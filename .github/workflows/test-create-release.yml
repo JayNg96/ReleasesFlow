@@ -10,7 +10,7 @@ jobs:
     environment: PROD
     steps:
       - name: Checkout Own Repo
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
         with:
           repository: JayNg96/ReleasesFlow
         
