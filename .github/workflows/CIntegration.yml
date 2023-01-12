@@ -13,16 +13,19 @@ jobs:
     
     - name: Set environment variable to DEV
       if: github.ref == 'refs/heads/dev'
+      run: echo "DEV Environment"
       env:
         ENVIRONMENT: DEV
         
     - name: Set environment variable to UAT
       if: github.ref == 'refs/heads/uat'
+      run: echo "UAT Environment"
       env:
         ENVIRONMENT: UAT
         
     - name: Set environment variable to PROD
       if: github.ref == 'refs/heads/prod'
+      run: echo "PROD Environment"
       env:
         ENVIRONMENT: PROD 
         
