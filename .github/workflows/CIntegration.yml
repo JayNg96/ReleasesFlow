@@ -7,22 +7,22 @@ on:
       - 'prod'
 
 jobs:
+  env-dev:
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    environment: DEV
+  env-uat:
+    if: github.ref == 'refs/heads/uat'
+    runs-on: ubuntu-latest
+    environment: UAT      
+  env-prod:
+    if: github.ref == 'refs/heads/prod'
+    runs-on: ubuntu-latest
+    environment: PROD
+    
   build:
     runs-on: ubuntu-latest
     steps:
-    
-    - name: Set environment variable
-      if: github.ref == 'refs/heads/dev'
-      run: echo "ENVIRONMENT=DEV" >> $GITHUB_ENV
-      
-    - name: Set environment variable
-      if: github.ref == 'refs/heads/uat'
-      run: echo "ENVIRONMENT=UAT" >> $GITHUB_ENV
-      
-    - name: Set environment variable
-      if: github.ref == 'refs/heads/prod'
-      run: echo "ENVIRONMENT=PROD" >> $GITHUB_ENV
-      
     - uses: actions/setup-python@v2
       with:
         python-version: 3.11
@@ -68,4 +68,6 @@ jobs:
           
           Below are the test report:
         document: report.xml
+        
+
 
