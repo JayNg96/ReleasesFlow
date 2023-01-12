@@ -10,41 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-<<<<<<< HEAD
-      - name: conventional Changelog Action
-        id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
-        with:
-          github-token: ${{ secrets.github_token }}
-          version-file: "./package.json,./package-lock.json"
-        
-      - name: create release
-        id: create-new-release
-        uses: actions/create-release@v1
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
-          body: ${{ steps.changelog.outputs.clean_changelog }}
-          
-      - name: Archive site content
-        uses: thedoctor0/zip-release@master
-        with:
-          filename: ${{ steps.changelog.outputs.tag }}.zip
-          
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create-new-release.outputs.upload_url }}
-          asset_path: ./${{ steps.changelog.outputs.tag }}.zip
-          asset_name: ${{ steps.changelog.outputs.tag }}.zip
-          asset_content_type: application/zip
-=======
->>>>>>> prod
 
 

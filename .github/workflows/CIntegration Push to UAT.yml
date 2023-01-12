@@ -32,9 +32,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        assignees: ${{ github.actor }}
-        update_existing: true
-        search_existing: all
+        filename: .github/ISSUE_TEMPLATE.md
   
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action/composite@v2
@@ -47,12 +45,5 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          ${{ github.actor }} has just pushed to UAT.
-          Commit message: ${{ github.event.commits[0].message }}
-          Repository: ${{ github.repository }}
-          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          
-          Below are the test report:
         document: report.xml
 
