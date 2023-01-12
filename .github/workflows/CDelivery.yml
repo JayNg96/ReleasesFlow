@@ -7,7 +7,7 @@ on:
       - 'prod'
 
 jobs:
-  Test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -34,10 +34,10 @@ jobs:
         with:
           junit_files: "report.xml"
         
-  Create-Release:
+  create-release:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/prod'
-    needs: Test
+    needs: Build
     environment: PROD
     steps:
       - name: Checkout Own Repo
