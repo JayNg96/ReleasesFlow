@@ -11,24 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - name: Set environment variable to DEV
+    - name: Set environment variable
       if: github.ref == 'refs/heads/dev'
-      run: echo "DEV Environment"
-      env:
-        ENVIRONMENT: DEV
-        
-    - name: Set environment variable to UAT
+      run: echo "ENVIRONMENT=DEV" >> $GITHUB_ENV
+      
+    - name: Set environment variable
       if: github.ref == 'refs/heads/uat'
-      run: echo "UAT Environment"
-      env:
-        ENVIRONMENT: UAT
-        
-    - name: Set environment variable to PROD
+      run: echo "ENVIRONMENT=UAT" >> $GITHUB_ENV
+      
+    - name: Set environment variable
       if: github.ref == 'refs/heads/prod'
-      run: echo "PROD Environment"
-      env:
-        ENVIRONMENT: PROD 
-        
+      run: echo "ENVIRONMENT=PROD" >> $GITHUB_ENV
+      
     - uses: actions/setup-python@v2
       with:
         python-version: 3.11
