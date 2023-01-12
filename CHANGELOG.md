@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.8.0...v1.9.0) (2023-01-12)
+
+
+### Features
+
+* new feature ([2bb1d0a](https://github.com/JayNg96/ReleasesFlow/commit/2bb1d0a632d05af5741cc261ad26179bd5e5cf48))
+
+
+
 # [1.8.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.7.0...v1.8.0) (2023-01-12)
 
 
@@ -36,15 +45,6 @@
 ### Bug Fixes
 
 * added new line ([d3b88ac](https://github.com/JayNg96/ReleasesFlow/commit/d3b88acb9e00086b9f6e989e136acde9e25a9599))
-
-
-
-## [1.5.4](https://github.com/JayNg96/ReleasesFlow/compare/v1.5.3...v1.5.4) (2022-12-31)
-
-
-### Bug Fixes
-
-* Added new lines ([2fc9794](https://github.com/JayNg96/ReleasesFlow/commit/2fc97946c82444ea42c3e9936d37126b0372b5bb))
 
 
 
