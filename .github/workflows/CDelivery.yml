@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     if: github.ref == 'refs/heads/prod'
-    environment: production
+    environment: PROD
     steps:
       - name: conventional Changelog Action
         id: changelog
