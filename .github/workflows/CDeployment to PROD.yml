@@ -1,16 +1,16 @@
-name: CDelivery
+name: CDeployment
 on:
-  push:
-    branches:
-      - 'prod'
+  pull_request:
+    branches: 'prod'
 
 jobs:
-  Create-Release:
+  Continuous-Deployment:
     runs-on: ubuntu-latest
     environment: PROD
     steps:
       - uses: actions/checkout@v3
       
+<<<<<<< HEAD
       - name: conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
@@ -44,17 +44,7 @@ jobs:
           asset_path: ./${{ steps.changelog.outputs.tag }}.zip
           asset_name: ${{ steps.changelog.outputs.tag }}.zip
           asset_content_type: application/zip
+=======
+>>>>>>> prod
 
-      - name: send zip on push
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ${{ github.actor }} created a new release: ${{ env.RELEASE_VERSION }}
-            Commit message: ${{ github.event.commits[0].message }}
-            Repository: ${{ github.repository }}
-            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            
-            File Version ${{ steps.changelog.outputs.tag }}.zip will be downloadable below.
-          document: ${{ steps.changelog.outputs.tag }}.zip
+
