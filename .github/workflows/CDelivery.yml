@@ -26,6 +26,7 @@ jobs:
           
       - name: test with pytest
         run: |
+          source env/Scripts/activate
           python -m pytest tests/test_* -v -cov --junitxml=report.xml
     
       - name: Publish Test Results
