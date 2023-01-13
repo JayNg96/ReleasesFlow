@@ -1,6 +1,8 @@
 import unittest
-import sys
-sys.path.append('..')
+import sys, os, inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 from app import *
 
 
