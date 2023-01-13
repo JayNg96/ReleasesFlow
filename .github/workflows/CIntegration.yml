@@ -18,16 +18,16 @@ jobs:
         
     - name: Install Libraries
       run: |
-        pip install flake8 pytest pytest-cov
+        pip install flake8 pytest pytest-cov pandas Flask Flask-MySQLdb Flask-SQLAlchemy mysql-connector-python-rf PyMySQL SQLAlchemy
         
-    - name: Checkout Own Repo
+    - name: Checkout Repo
       uses: actions/checkout@v3
       with:
         repository: JayNg96/ReleasesFlow
         
     - name: test with pytest
       run: |
-        pytest tests/test_*.py -v -cov --junitxml=report.xml
+        pytest tests/test_*.py -v -cov --junitxml=dev_report.xml
 
     - if: ${{ failure() }}
       uses: JasonEtco/create-an-issue@v2
@@ -42,7 +42,7 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action/composite@v2
       if: always()
       with:
-        junit_files: "report.xml"
+        junit_files: "dev_report.xml"
     
     - name: send report xml on push
       uses: appleboy/telegram-action@master
@@ -56,12 +56,12 @@ jobs:
           See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
           
           Below are the test report:
-        document: report.xml
+        document: dev_report.xml
     
   build-uat:
     if: github.ref == 'refs/heads/uat'
     runs-on: ubuntu-latest
-    environment: UAT   
+    environment: DEV
     steps:
     - uses: actions/setup-python@v2
       with:
@@ -69,16 +69,16 @@ jobs:
         
     - name: Install Libraries
       run: |
-        pip install flake8 pytest pytest-cov
+        pip install flake8 pytest pytest-cov pandas Flask Flask-MySQLdb Flask-SQLAlchemy mysql-connector-python-rf PyMySQL SQLAlchemy
         
-    - name: Checkout Own Repo
+    - name: Checkout Repo
       uses: actions/checkout@v3
       with:
         repository: JayNg96/ReleasesFlow
         
     - name: test with pytest
       run: |
-        pytest tests/test_*.py -v -cov --junitxml=report.xml
+        pytest tests/test_*.py -v -cov --junitxml=uat_report.xml
 
     - if: ${{ failure() }}
       uses: JasonEtco/create-an-issue@v2
@@ -93,7 +93,7 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action/composite@v2
       if: always()
       with:
-        junit_files: "report.xml"
+        junit_files: "uat_report.xml"
     
     - name: send report xml on push
       uses: appleboy/telegram-action@master
@@ -107,12 +107,12 @@ jobs:
           See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
           
           Below are the test report:
-        document: report.xml
+        document: uat_report.xml
         
   build-prod:
     if: github.ref == 'refs/heads/prod'
     runs-on: ubuntu-latest
-    environment: PROD
+    environment: DEV
     steps:
     - uses: actions/setup-python@v2
       with:
@@ -120,16 +120,16 @@ jobs:
         
     - name: Install Libraries
       run: |
-        pip install flake8 pytest pytest-cov
+        pip install flake8 pytest pytest-cov pandas Flask Flask-MySQLdb Flask-SQLAlchemy mysql-connector-python-rf PyMySQL SQLAlchemy
         
-    - name: Checkout Own Repo
+    - name: Checkout Repo
       uses: actions/checkout@v3
       with:
         repository: JayNg96/ReleasesFlow
         
     - name: test with pytest
       run: |
-        pytest tests/test_*.py -v -cov --junitxml=report.xml
+        pytest tests/test_*.py -v -cov --junitxml=prod_report.xml
 
     - if: ${{ failure() }}
       uses: JasonEtco/create-an-issue@v2
@@ -144,7 +144,7 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action/composite@v2
       if: always()
       with:
-        junit_files: "report.xml"
+        junit_files: "prod_report.xml"
     
     - name: send report xml on push
       uses: appleboy/telegram-action@master
@@ -158,5 +158,5 @@ jobs:
           See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
           
           Below are the test report:
-        document: report.xml
+        document: prod_report.xml
         
