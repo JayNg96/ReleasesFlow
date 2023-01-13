@@ -51,7 +51,7 @@ jobs:
     needs: build
     environment: PROD
     steps:
-      - name: Checkout Own Repo
+      - name: Checkout Repo
         uses: actions/checkout@v3
         with:
           repository: JayNg96/ReleasesFlow
