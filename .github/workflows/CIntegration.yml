@@ -12,6 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     environment: DEV
     steps:
+    # monitor tool
+    - name: Collect Workflow Telemetry
+      uses: runforesight/foresight-workflow-kit-action@v1
+      if: ${{ always() }}
+      with:
+        api_key: a31f21a1-29c8-49db-8e26-a289345781d9
+          
     - uses: actions/setup-python@v2
       with:
         python-version: 3.11
@@ -63,6 +70,13 @@ jobs:
     runs-on: ubuntu-latest
     environment: DEV
     steps:
+    # monitor tool
+    - name: Collect Workflow Telemetry
+      uses: runforesight/foresight-workflow-kit-action@v1
+      if: ${{ always() }}
+      with:
+        api_key: a31f21a1-29c8-49db-8e26-a289345781d9
+        
     - uses: actions/setup-python@v2
       with:
         python-version: 3.11
@@ -114,6 +128,13 @@ jobs:
     runs-on: ubuntu-latest
     environment: DEV
     steps:
+    # monitor tool
+    - name: Collect Workflow Telemetry
+      uses: runforesight/foresight-workflow-kit-action@v1
+      if: ${{ always() }}
+      with:
+        api_key: a31f21a1-29c8-49db-8e26-a289345781d9
+        
     - uses: actions/setup-python@v2
       with:
         python-version: 3.11
