@@ -10,6 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+        # monitor
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: a31f21a1-29c8-49db-8e26-a289345781d9
+          
       - uses: actions/checkout@v3
 
       - name: Install Libraries
