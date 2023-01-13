@@ -35,6 +35,7 @@ jobs:
     - name: test with pytest
       run: |
         pytest tests/test_*.py -v -cov --junitxml=dev_report.xml
+        pytest --cov=tests/ --cov-report=xml:dev_coverage.xml
         
     # monitoring tool - test analyzer
     - name: Analyze Test
@@ -45,6 +46,8 @@ jobs:
         test_format: JUNIT
         test_framework: PYTEST
         test_path: dev_report.xml
+        coverage_format: JACOCO/XML
+        coverage_path: dev_coverage.xml
         
     - if: ${{ failure() }}
       uses: JasonEtco/create-an-issue@v2
