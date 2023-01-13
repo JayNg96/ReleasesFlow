@@ -35,7 +35,17 @@ jobs:
     - name: test with pytest
       run: |
         pytest tests/test_*.py -v -cov --junitxml=dev_report.xml
-
+        
+    # monitoring tool - test analyzer
+    - name: Analyze Test
+      uses: runforesight/foresight-test-kit-action@v1
+      if: ${{ always() }}
+      with:
+        api_key: a31f21a1-29c8-49db-8e26-a289345781d9
+        test_format: JUNIT
+        test_framework: PYTEST
+        test_path: dev_report.xml
+        
     - if: ${{ failure() }}
       uses: JasonEtco/create-an-issue@v2
       env:
@@ -93,7 +103,17 @@ jobs:
     - name: test with pytest
       run: |
         pytest tests/test_*.py -v -cov --junitxml=uat_report.xml
-
+        
+    # monitoring tool - test analyzer
+    - name: Analyze Test
+      uses: runforesight/foresight-test-kit-action@v1
+      if: ${{ always() }}
+      with:
+        api_key: a31f21a1-29c8-49db-8e26-a289345781d9
+        test_format: JUNIT
+        test_framework: PYTEST
+        test_path: uat_report.xml
+        
     - if: ${{ failure() }}
       uses: JasonEtco/create-an-issue@v2
       env:
@@ -151,7 +171,17 @@ jobs:
     - name: test with pytest
       run: |
         pytest tests/test_*.py -v -cov --junitxml=prod_report.xml
-
+        
+    # monitoring tool - test analyzer
+    - name: Analyze Test
+      uses: runforesight/foresight-test-kit-action@v1
+      if: ${{ always() }}
+      with:
+        api_key: a31f21a1-29c8-49db-8e26-a289345781d9
+        test_format: JUNIT
+        test_framework: PYTEST
+        test_path: prod_report.xml
+        
     - if: ${{ failure() }}
       uses: JasonEtco/create-an-issue@v2
       env:
