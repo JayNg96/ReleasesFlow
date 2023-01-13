@@ -18,7 +18,7 @@ jobs:
         
     - name: Install Libraries
       run: |
-        pip install flake8 pytest pytest-cov pandas Flask Flask-MySQLdb Flask-SQLAlchemy mysql-connector-python-rf PyMySQL SQLAlchemy
+        pip install flake8 pytest pytest-cov pandas Flask Flask-MySQLdb Flask-SQLAlchemy PyMySQL SQLAlchemy
         
     - name: Checkout Repo
       uses: actions/checkout@v3
