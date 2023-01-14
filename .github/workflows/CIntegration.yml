@@ -10,8 +10,8 @@ jobs:
   build-dev:
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
-    environment: DEV
     steps:
+<<<<<<< HEAD
     # monitor tool
     - name: Collect Workflow Telemetry
       uses: runforesight/foresight-workflow-kit-action@v1
@@ -19,6 +19,27 @@ jobs:
       with:
         api_key: a31f21a1-29c8-49db-8e26-a289345781d9
           
+=======
+    
+    - name: Set environment variable to DEV
+      if: github.ref == 'refs/heads/dev'
+      run: echo "DEV Environment"
+      env:
+        ENVIRONMENT: DEV
+        
+    - name: Set environment variable to UAT
+      if: github.ref == 'refs/heads/uat'
+      run: echo "UAT Environment"
+      env:
+        ENVIRONMENT: UAT
+        
+    - name: Set environment variable to PROD
+      if: github.ref == 'refs/heads/prod'
+      run: echo "PROD Environment"
+      env:
+        ENVIRONMENT: PROD 
+        
+>>>>>>> prod
     - uses: actions/setup-python@v2
       with:
         python-version: 3.11
@@ -76,6 +97,7 @@ jobs:
           See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
           
           Below are the test report:
+<<<<<<< HEAD
         document: dev_report.xml
     
   build-uat:
@@ -220,3 +242,7 @@ jobs:
           Below are the test report:
         document: prod_report.xml
         
+=======
+        document: report.xml
+
+>>>>>>> prod
