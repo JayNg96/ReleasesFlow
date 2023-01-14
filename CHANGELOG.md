@@ -1,3 +1,12 @@
+# [1.20.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.19.1...v1.20.0) (2023-01-14)
+
+
+### Features
+
+* new ([30005b1](https://github.com/JayNg96/ReleasesFlow/commit/30005b1d3aaca0601623476fc2ad046d7c5e00aa))
+
+
+
 ## [1.19.1](https://github.com/JayNg96/ReleasesFlow/compare/v1.19.0...v1.19.1) (2023-01-14)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * test ([1d9d933](https://github.com/JayNg96/ReleasesFlow/commit/1d9d93350b622d5bbae47ca2e6d6446b683e6f63))
-
-
-
-# [1.17.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.16.0...v1.17.0) (2023-01-14)
-
-
-### Features
-
-* new feat ([d9b7429](https://github.com/JayNg96/ReleasesFlow/commit/d9b742941ad260aeb6f75aa6f66d0b8cb94ec069))
 
 
 
