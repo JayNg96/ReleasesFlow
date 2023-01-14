@@ -12,8 +12,7 @@ on:
 jobs:     
   build:
     runs-on: ubuntu-latest
-    steps:
-          
+    steps:    
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
@@ -38,9 +37,6 @@ jobs:
     needs: build
     environment: PROD
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
     - name: Deploy to production
       if: github.event.pull_request.merged == true
       run: |
