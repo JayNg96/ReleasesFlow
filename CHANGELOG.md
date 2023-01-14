@@ -1,3 +1,12 @@
+## [1.21.1](https://github.com/JayNg96/ReleasesFlow/compare/v1.21.0...v1.21.1) (2023-01-14)
+
+
+### Bug Fixes
+
+* wf ([fe67bde](https://github.com/JayNg96/ReleasesFlow/commit/fe67bde83174b2c019d15e391e314da3d0526781))
+
+
+
 # [1.21.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.20.3...v1.21.0) (2023-01-14)
 
 
@@ -34,15 +43,6 @@
 ### Bug Fixes
 
 * workflow ([410a540](https://github.com/JayNg96/ReleasesFlow/commit/410a540c7c6cd0bb5c484b14dc9f1ea369422f5a))
-
-
-
-# [1.20.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.19.1...v1.20.0) (2023-01-14)
-
-
-### Features
-
-* new ([30005b1](https://github.com/JayNg96/ReleasesFlow/commit/30005b1d3aaca0601623476fc2ad046d7c5e00aa))
 
 
 
