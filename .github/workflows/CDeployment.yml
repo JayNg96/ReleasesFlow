@@ -44,6 +44,7 @@ jobs:
       # ansible-playbook deploy.yml -i production
       
     - name: send zip on push
+      if: github.event.pull_request.merged == true
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
