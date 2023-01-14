@@ -51,12 +51,12 @@ jobs:
         labels: "deployment"
         reviewers: "team-lead, developer1, developer2"
 
-#     - name: Deploy to production
-#       if: github.event.pull_request.merged == true
-#       run: |
-#         ansible-playbook deploy.yml -i production
-#         git push origin prod
-
+    - name: Deploy to production
+      if: github.event.pull_request.merged == true
+      run: |
+        git push origin prod
+      # ansible-playbook deploy.yml -i production
+      
     - name: send zip on push
       uses: appleboy/telegram-action@master
       with:
