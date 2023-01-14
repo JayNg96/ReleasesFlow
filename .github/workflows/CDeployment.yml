@@ -48,7 +48,6 @@ jobs:
       uses: dolittle/read-version-from-file-action@v2
       with:
         file: package.json
-        version-path: version
         
     - name: create release
       id: create-new-release
