@@ -73,4 +73,19 @@ jobs:
           asset_path: ./${{ steps.changelog.outputs.tag }}.zip
           asset_name: ${{ steps.changelog.outputs.tag }}.zip
           asset_content_type: application/zip
+          
+      - name: Create release branch
+        run: |
+          git branch release/${{ steps.changelog.outputs.tag }}
+          git push -u origin release/${{ steps.changelog.outputs.tag }}
+          
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: release/${{ steps.changelog.outputs.tag }}
+          title: "Release ${{ steps.changelog.outputs.tag }}"
+          body: "This pull request is to deploy the code from UAT to the release branch"
+          labels: "deployment"
+          reviewers: "JayNg96"
         
