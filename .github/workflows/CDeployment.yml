@@ -44,13 +44,14 @@ jobs:
       # ansible-playbook deploy.yml -i production
       
     - name: send zip on push
+      if: github.event.pull_request.merged == true
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           Hello Stakeholders,
-          We are excited to announce the release of version ${{ env.RELEASE_VERSION }} of our project. This release includes several new features, bug fixes, and performance improvements.
+          We are excited to announce the release of version ${{ steps.changelog.outputs.tag }} of our project. This release includes several new features, bug fixes, and performance improvements.
           Please take a moment to review the changelog and release notes for more details on the changes in this release at https://github.com/${{ github.repository }}/commit/${{github.sha}}.
           As always, if you have any questions or concerns, please don't hesitate to reach out to the project team.
           Best regards,
