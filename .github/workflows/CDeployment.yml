@@ -1,5 +1,6 @@
 name: Deployment
 on:
+  push:
   pull_request: 
     types: [opened, closed]
     branches:
@@ -44,17 +45,17 @@ jobs:
       # ansible-playbook deploy.yml -i production
       
     - name: send zip on push
-      if: github.event.pull_request.merged == true
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           Hello Stakeholders,
-          We are excited to announce the release of version ${{ steps.changelog.outputs.tag }} of our project. This release includes several new features, bug fixes, and performance improvements.
-          Please take a moment to review the changelog and release notes for more details on the changes in this release at https://github.com/${{ github.repository }}/commit/${{github.sha}}.
+          We are excited to announce the new release of version ${{ steps.create-new-release.outputs.tag_name }} of our project.
+          This release includes several new features, bug fixes, and performance improvements.
+          Please take a moment to review the release notes for more details on the changes in this release at https://github.com/${{ github.repository }}/releases/tag/${{ steps.create-new-release.outputs.tag_name }}.
           As always, if you have any questions or concerns, please don't hesitate to reach out to the project team.
           Best regards,
           DOT4"
-            
+
 
