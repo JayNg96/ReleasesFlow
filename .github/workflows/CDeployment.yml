@@ -47,7 +47,7 @@ jobs:
     - name: Get current version
       uses: dolittle/read-version-from-file-action@v2
       with:
-        file: ./package.json
+        file: "./package.json,./package-lock.json"
         
     - name: create release
       id: create-new-release
