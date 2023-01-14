@@ -1,9 +1,10 @@
 name: Deployment
 on:
-  pull_request:
+  pull_request: 
+    types: [opened, closed]
     branches:
       - 'prod'
-      
+    
 jobs:     
   build:
     runs-on: ubuntu-latest
