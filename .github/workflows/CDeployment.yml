@@ -44,11 +44,9 @@ jobs:
         git push origin prod
       # ansible-playbook deploy.yml -i production
       
-    - name: Get version from file
-      id: version
-      uses: marketplace/utilities/get-version-from-file@v1
+    - name: Get current version
+      uses: dolittle/read-version-from-file-action@v2
       with:
-        repository: JayNg96/ReleasesFlow   
         file: CHANGELOG.md
         
     - name: create release
