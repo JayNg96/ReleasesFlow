@@ -44,11 +44,20 @@ jobs:
         git push origin prod
       # ansible-playbook deploy.yml -i production
       
-    - name: Generate Release Version and Changelog
-      run: |
-        export RELEASE_VERSION=$(scripts/generate-version.sh)
-        export CHANGELOG=$(scripts/generate-changelog.sh)
+    - name: Get version from file
+      id: version
+      uses: marketplace/utilities/get-version-from-file@v1
+      with:
+        file: CHANGELOG.md
         
+    - name: create release
+      id: create-new-release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ steps.version.outputs.version }}
+          
     - name: send zip on push
       uses: appleboy/telegram-action@master
       with:
@@ -56,8 +65,8 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           Hello Stakeholders,
-          We are excited to announce the release of version ${{ env.RELEASE_VERSION }} of our project. ${{ env.CHANGELOG }}
+          We are excited to announce the new release of version {{ steps.version.outputs.version }} of our project. This release includes several new features, bug fixes, and performance improvements.
+          Please take a moment to review the changelog and release notes for more details on the changes in this release at https://github.com/${{ github.repository }}/commit/${{github.sha}}.
           As always, if you have any questions or concerns, please don't hesitate to reach out to the project team.
           Best regards,
           DOT4"
-
