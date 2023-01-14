@@ -1,3 +1,13 @@
+# [1.16.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.15.0...v1.16.0) (2023-01-14)
+
+
+### Features
+
+* new feat ([d19d6fe](https://github.com/JayNg96/ReleasesFlow/commit/d19d6fecae405c4dd6e2a33b0764c9d932b3be97))
+* new workflow patch ([664b6fd](https://github.com/JayNg96/ReleasesFlow/commit/664b6fd0975231966d41724b4043c03018a98695))
+
+
+
 # [1.15.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.14.0...v1.15.0) (2023-01-14)
 
 
@@ -33,15 +43,6 @@
 ### Features
 
 * new file ([2678f7a](https://github.com/JayNg96/ReleasesFlow/commit/2678f7a2b6c369882d6413b52ae25316f2ceedfc))
-
-
-
-# [1.11.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.10.0...v1.11.0) (2023-01-12)
-
-
-### Features
-
-* Update Workflow ([353c879](https://github.com/JayNg96/ReleasesFlow/commit/353c8792d29ddc6340f04ef77f6b378088a34d94))
 
 
 
