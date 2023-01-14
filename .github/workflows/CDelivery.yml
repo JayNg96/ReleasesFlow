@@ -14,16 +14,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
-          repository: JayNg96/ReleasesFlow
-          
-      - name: list out contents
-        run: |
-          ls  
+          repository: JayNg96/ReleasesFlow    
           
       - name: Install Libraries
         run: |
-          pip install flake8 pytest pytest-cov pandas Flask Flask-MySQLdb Flask-SQLAlchemy mysql-connector-python-rf PyMySQL SQLAlchemy
-          
+          pip install flake8 pytest pytest-cov pandas Flask Flask-MySQLdb Flask-SQLAlchemy mysql-connector-python-rf PyMySQL SQLAlchemy   
 
       - name: list out contents
         run: |
@@ -31,13 +26,8 @@ jobs:
           
       - name: test with pytest
         run: |
-          python -m pytest tests/test_* -v -cov --junitxml=report.xml
+          python -m pytest tests/test_* -v -cov
     
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          junit_files: "report.xml"
         
   create-release:
     runs-on: ubuntu-latest
@@ -84,16 +74,3 @@ jobs:
           asset_name: ${{ steps.changelog.outputs.tag }}.zip
           asset_content_type: application/zip
         
-      - name: send zip on push
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            New release has been deployed: ${{ env.RELEASE_VERSION }}
-            Commit message: ${{ github.event.commits[0].message }}
-            Repository: ${{ github.repository }}
-            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            
-            File version ${{ steps.changelog.outputs.tag }}.zip will be downloadable below.
-          document: ${{ steps.changelog.outputs.tag }}.zip
