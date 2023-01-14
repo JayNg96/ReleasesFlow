@@ -88,7 +88,7 @@ jobs:
             Hello Stakeholders,
             We are excited to announce the new release of version ${{ steps.changelog.outputs.tag }} of our project.
             This release includes following changes:
-            ${{ steps.changelog.outputs.tag }}
+            ${{ steps.changelog.outputs.clean_changelog }}
             Please take a moment to review the release notes for more details on the changes in this release at https://github.com/${{ github.repository }}/commit/${{github.sha}}.
             As always, if you have any questions or concerns, please don't hesitate to reach out to the project team.
             Best regards,
