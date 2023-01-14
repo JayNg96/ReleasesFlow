@@ -48,6 +48,7 @@ jobs:
       id: version
       uses: marketplace/utilities/get-version-from-file@v1
       with:
+        repository: JayNg96/ReleasesFlow   
         file: CHANGELOG.md
         
     - name: create release
