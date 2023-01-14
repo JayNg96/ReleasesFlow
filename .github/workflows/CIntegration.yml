@@ -81,7 +81,7 @@ jobs:
   build-uat:
     if: github.ref == 'refs/heads/uat'
     runs-on: ubuntu-latest
-    environment: DEV
+    environment: UAT
     steps:
     # monitor tool
     - name: Collect Workflow Telemetry
@@ -152,7 +152,7 @@ jobs:
   build-prod:
     if: github.ref == 'refs/heads/prod'
     runs-on: ubuntu-latest
-    environment: DEV
+    environment: PROD
     steps:
     # monitor tool
     - name: Collect Workflow Telemetry
