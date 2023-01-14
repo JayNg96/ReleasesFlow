@@ -1,3 +1,14 @@
+# [1.14.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.13.0...v1.14.0) (2023-01-14)
+
+
+### Features
+
+* new feat ([96bac85](https://github.com/JayNg96/ReleasesFlow/commit/96bac85d4dd42549c4e88a9c7e611d75070c9c03))
+* new feat ([bfdf5b8](https://github.com/JayNg96/ReleasesFlow/commit/bfdf5b80989ddeadaa6006af2bb3d4a88ff7808d))
+* new feat ([1080bf7](https://github.com/JayNg96/ReleasesFlow/commit/1080bf7bf7a24af509619d01a50d6d6e2e805f40))
+
+
+
 # [1.13.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.12.0...v1.13.0) (2023-01-12)
 
 
@@ -31,15 +42,6 @@
 ### Features
 
 * new shit ([101d7d4](https://github.com/JayNg96/ReleasesFlow/commit/101d7d4bc78d6238bbcb6a0aa20fd42d345a9187))
-
-
-
-# [1.9.0](https://github.com/JayNg96/ReleasesFlow/compare/v1.8.0...v1.9.0) (2023-01-12)
-
-
-### Features
-
-* new feature ([2bb1d0a](https://github.com/JayNg96/ReleasesFlow/commit/2bb1d0a632d05af5741cc261ad26179bd5e5cf48))
 
 
 
