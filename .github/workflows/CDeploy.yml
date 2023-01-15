@@ -1,4 +1,4 @@
-name: CDelivery
+name: CDeployment
 on:
   push:
     branches:
@@ -27,7 +27,7 @@ jobs:
           python -m pytest tests/test_* -v -cov
     
         
-  create-release:
+  deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/prod'
     needs: build
@@ -83,7 +83,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Hello Stakeholders,
+            Hello,
             We are excited to announce the new release of version ${{ steps.changelog.outputs.tag }} of our project.
             This release includes following changes:
             ${{ steps.changelog.outputs.clean_changelog }}
