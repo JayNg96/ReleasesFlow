@@ -2,6 +2,8 @@ name: CIntegration-PR
 on:
   pull_request:
     types: [opened]
+    branches:
+      - '*'
 
 jobs:
   build-dev:
