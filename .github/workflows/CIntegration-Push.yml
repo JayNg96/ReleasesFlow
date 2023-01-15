@@ -1,4 +1,4 @@
-name: CIntegration
+name: CIntegration-Push
 on:
   push:
     branches:
