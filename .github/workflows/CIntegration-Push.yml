@@ -1,4 +1,4 @@
-name: CIntegration
+name: CIntegration-Push
 on:
   push:
     branches:
@@ -81,7 +81,7 @@ jobs:
   build-uat:
     if: github.ref == 'refs/heads/uat'
     runs-on: ubuntu-latest
-    environment: DEV
+    environment: UAT
     steps:
     # monitor tool
     - name: Collect Workflow Telemetry
@@ -141,7 +141,7 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          ${{ github.actor }} has just pushed to DEV.
+          ${{ github.actor }} has just pushed to UAT.
           Commit message: ${{ github.event.commits[0].message }}
           Repository: ${{ github.repository }}
           See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
@@ -152,7 +152,7 @@ jobs:
   build-prod:
     if: github.ref == 'refs/heads/prod'
     runs-on: ubuntu-latest
-    environment: DEV
+    environment: PROD
     steps:
     # monitor tool
     - name: Collect Workflow Telemetry
@@ -212,7 +212,7 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-          ${{ github.actor }} has just pushed to DEV.
+          ${{ github.actor }} has just pushed to PROD.
           Commit message: ${{ github.event.commits[0].message }}
           Repository: ${{ github.repository }}
           See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
