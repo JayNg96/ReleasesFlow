@@ -6,10 +6,8 @@ on:
       - '*'
 
 jobs:
-  build-dev:
-    if: github.ref == 'refs/heads/dev'
+  build:
     runs-on: ubuntu-latest
-    environment: DEV
     steps:        
     - uses: actions/setup-python@v2
       with:
