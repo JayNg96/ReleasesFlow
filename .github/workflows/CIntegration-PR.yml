@@ -32,7 +32,7 @@ jobs:
       with:
         junit_files: "report.xml"
     
-    - name: Label PR Size
+    - name: Label PR size
       uses: coverwallet/pr-labeler@v1.2.1
       with:
         xs_max_size: '10'
@@ -40,4 +40,6 @@ jobs:
         m_max_size: '500'
         l_max_size: '1000'
         exclude_files: '.txt'
-        
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
