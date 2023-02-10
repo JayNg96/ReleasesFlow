@@ -43,13 +43,19 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Notify team on pull request
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          ${{ github.actor }} has just submitted a pull request.
-          Pull request message: ${{ github.event.pull_request.body }}
-          Repository: ${{ github.repository }}
-          See changes: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}
+    - name: Assign Reviewers
+      if: github.event_name == 'pull_request'
+      env:
+        REVIEWER_1: vanweiting
+        REVIEWER_2: Mitha1328
+        REVIEWER_3: DevOps-Team4-2022
+      run: |
+        echo "Checking pull request creator..."
+        if [ "${{ github.event.pull_request.user.login }}" == "jayng96" ]; then
+          echo "Assigning reviewers..."
+          REVIEWERS="${{ env.REVIEWER_3 }}"
+          echo "::set-output name=reviewers::$REVIEWERS"
+        fi
+          
+          
+          
