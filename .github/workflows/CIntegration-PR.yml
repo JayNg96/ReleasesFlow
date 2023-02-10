@@ -2,12 +2,12 @@ name: CIntegration-PR
 on:
   pull_request:
     types: [opened]
+    branches:
+      - '*'
 
 jobs:
-  build-dev:
-    if: github.ref == 'refs/heads/dev'
+  build:
     runs-on: ubuntu-latest
-    environment: DEV
     steps:        
     - uses: actions/setup-python@v2
       with:
@@ -32,7 +32,7 @@ jobs:
       with:
         junit_files: "report.xml"
     
-    - name: Label PR Size
+    - name: Label PR size
       uses: coverwallet/pr-labeler@v1.2.1
       with:
         xs_max_size: '10'
@@ -40,4 +40,20 @@ jobs:
         m_max_size: '500'
         l_max_size: '1000'
         exclude_files: '.txt'
-        
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Assign Reviewers
+      if: github.event_name == 'pull_request'
+      env:
+        REVIEWER: DevOps-Team4-2022
+      run: |
+        echo "Checking pull request creator..."
+        if [ "${{ github.event.pull_request.user.login }}" == "JayNg96" ]; then
+          echo "Assigning reviewers..."
+          REVIEWERS="${{ env.REVIEWER }}"
+          echo "::set-output name=reviewers::$REVIEWERS"
+        fi
+                  
+    - name : Print Title of PR
+      run: echo The Title of your PR is ${{ github.event.pull_request.title }}
