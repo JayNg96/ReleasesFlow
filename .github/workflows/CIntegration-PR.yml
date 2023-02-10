@@ -46,16 +46,14 @@ jobs:
     - name: Assign Reviewers
       if: github.event_name == 'pull_request'
       env:
-        REVIEWER_1: vanweiting
-        REVIEWER_2: Mitha1328
-        REVIEWER_3: DevOps-Team4-2022
+        REVIEWER: DevOps-Team4-2022
       run: |
         echo "Checking pull request creator..."
         if [ "${{ github.event.pull_request.user.login }}" == "JayNg96" ]; then
           echo "Assigning reviewers..."
-          REVIEWERS="${{ env.REVIEWER_3 }}"
+          REVIEWERS="${{ env.REVIEWER }}"
           echo "::set-output name=reviewers::$REVIEWERS"
         fi
-          
-          
-          
+                  
+    - name : Print Title of PR
+      run: echo The Title of your PR is ${{ github.event.pull_request.title }}
