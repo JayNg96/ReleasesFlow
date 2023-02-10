@@ -51,7 +51,7 @@ jobs:
         REVIEWER_3: DevOps-Team4-2022
       run: |
         echo "Checking pull request creator..."
-        if [ "${{ github.event.pull_request.user.login }}" == "jayng96" ]; then
+        if [ "${{ github.event.pull_request.user.login }}" == "JayNg96" ]; then
           echo "Assigning reviewers..."
           REVIEWERS="${{ env.REVIEWER_3 }}"
           echo "::set-output name=reviewers::$REVIEWERS"
