@@ -43,3 +43,13 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Notify team on pull request
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ${{ github.actor }} has just submitted a pull request.
+          Pull request message: ${{ github.event.pull_request.body }}
+          Repository: ${{ github.repository }}
+          See changes: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}
