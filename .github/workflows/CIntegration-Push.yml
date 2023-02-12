@@ -64,19 +64,6 @@ jobs:
       with:
         junit_files: "dev_report.xml"
     
-    - name: send report xml on push
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          ${{ github.actor }} has just pushed to DEV.
-          Commit message: ${{ github.event.commits[0].message }}
-          Repository: ${{ github.repository }}
-          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          
-          Below are the test report:
-        document: dev_report.xml
     
   build-uat:
     if: github.ref == 'refs/heads/uat'
@@ -135,19 +122,6 @@ jobs:
       with:
         junit_files: "uat_report.xml"
     
-    - name: send report xml on push
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          ${{ github.actor }} has just pushed to UAT.
-          Commit message: ${{ github.event.commits[0].message }}
-          Repository: ${{ github.repository }}
-          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          
-          Below are the test report:
-        document: uat_report.xml
         
   build-prod:
     if: github.ref == 'refs/heads/prod'
@@ -205,17 +179,4 @@ jobs:
       if: always()
       with:
         junit_files: "prod_report.xml"
-    
-    - name: send report xml on push
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          ${{ github.actor }} has just pushed to PROD.
-          Commit message: ${{ github.event.commits[0].message }}
-          Repository: ${{ github.repository }}
-          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          
-          Below are the test report:
-        document: prod_report.xml
+
